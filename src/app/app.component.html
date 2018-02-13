@@ -5,7 +5,29 @@
    <!-- <input type="text" [(ngModel)]="term"> -->
 </div>
 
-<p-table [columns]="cols" [value]="cars   | filter:term" selectionMode="single" [(selection)]="selectedCar" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="10">
+<h3>Find By Brand Name</h3>
+<div style="width: 300px;">
+	<form (ngSubmit)="onSubmit()">
+		<div class="form-group">
+			<label for="brand">Brand</label> <input type="text"
+				class="form-control" id="brand" required [(ngModel)]="brand"
+				name="brand">
+		</div>
+ 
+		<div class="btn-group">
+			<button type="submit" class="btn btn-success">Submit</button>
+		</div>
+	</form>
+</div>
+<!--<ul>
+	<li *ngFor="let cust of customers">
+		<h4>{{cust.id}} - {{cust.firstName}} {{cust.lastName}}</h4>
+	</li>
+</ul> -->
+
+
+<p-table [columns]="cols" [value]="cars   | filter:term " selectionMode="single" 
+[(selection)]="selectedCar" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="5">
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns">

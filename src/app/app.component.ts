@@ -25,6 +25,9 @@ export class AppComponent implements OnInit{
     cols: any[];
 
     profile = {};
+
+    brand: string;
+
     
     constructor(private carService: CarService) { }
 
@@ -88,6 +91,16 @@ export class AppComponent implements OnInit{
     findSelectedCarIndex(): number {
         return this.cars.indexOf(this.selectedCar);
     }
+
+    private searchCustomers() {
+        this.carService.getCarsByBrand(this.brand).map(data => this.cars = data);
+      }
+    
+      onSubmit() {
+        this.searchCustomers();
+      }
+
+   
 }
 
 export class PrimeCar implements Car {
